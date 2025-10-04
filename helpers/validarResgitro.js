@@ -5,6 +5,7 @@
 */
 import {expresiones} from "./expresiones.js"
 
+export function valdarFormulario(){
     let inputs = document.getElementsByClassName("formulario__entrada")
     let arregloInputs = [...inputs] // Convierte una colección HTML en un array - Los ... son el operador spread que sirve para expandir los elementos de un iterable (como un array o una cadena) en lugares donde se esperan múltiples elementos.
     
@@ -91,3 +92,5 @@ hobbies.forEach((hobbie)=>{
         }
     })
 });
+}
+    
