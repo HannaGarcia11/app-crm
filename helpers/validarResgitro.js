@@ -35,7 +35,25 @@ import {expresiones} from "./expresiones.js"
                     }
                     break;
                 case "telefono":
-                    if(expresiones.numero.test(e.target.value)){
+                    if(expresiones.telefono.test(e.target.value)){
+                        e.target.classList.add("correcto")
+                        e.target.classList.remove("incorrecto")
+                    } else {
+                        e.target.classList.add("incorrecto")
+                        e.target.classLista.remove("correcto")
+                    }
+                    break;
+                case "correo":
+                    if(expresiones.correo.test(e.target.value)){
+                        e.target.classList.add("correcto")
+                        e.target.classList.remove("incorrecto")
+                    } else {
+                        e.target.classList.add("incorrecto")
+                        e.target.classLista.remove("correcto")
+                    }
+                    break;
+                case "contrasena":
+                    if(expresiones.contrasena.test(e.target.value)){
                         e.target.classList.add("correcto")
                         e.target.classList.remove("incorrecto")
                     } else {
@@ -46,4 +64,30 @@ import {expresiones} from "./expresiones.js"
 
             }
         })
+});
+
+let lista = document.querySelector("#genero") // querySelector me permite seleccionar un elemento por su selector CSS
+lista.addEventListener("change", (e)=>{
+    if(e.target.value !== ""){
+        e.target.classList.add("correcto")
+        e.target.classList.remove("incorrecto")
+    } else {
+        e.target.classList.add("incorrecto")
+        e.target.classList.remove("correcto")
+    }
+});
+
+let hobbies = document.querySelectorAll("input[name= 'hobbies']") // querySelectorAll me permite seleccionar todos los elementos que coincidan con el selector CSS
+hobbies.forEach((hobbie)=>{
+    hobbie.addEventListener("change", ()=>{
+        let hobbiesChecked = document.querySelectorAll("input[name='hobbies']:checked") // querySelectorAll me permite seleccionar todos los elementos que coincidan con el selector CSS
+        let cajaHobbies = document.querySelectorAll(".formulario__grupo--hobbies") // querySelectorAll me permite seleccionar todos los elementos que coincidan con el selector CSS
+        if(hobbies.length > 0){
+            cajaHobbies.classList.add("correcto")
+            cajaHobbies.classList.remove("incorrecto")
+        }else {
+            cajaHobbies.classList.add("incorrecto")
+            cajaHobbies.classList.remove("correcto")
+        }
+    })
 });
